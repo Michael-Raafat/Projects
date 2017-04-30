@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head lang="en">
+	<title>Register</title>
+	<meta charset="utf-8">
+	<script src="jquery.js"></script>
+	<script src="jquery-ui.js"></script>
+	<link rel="stylesheet" href="jquery-ui.css" />
+	<link rel="stylesheet" href="jquery.dataTables.min.css" />
+	<link rel="stylesheet" href="MyPoor.css" />
+	<script src="jquery.dataTables.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	
+<script>
+function row(email,name,pass){
+        this.email = email;
+        this.name = name;
+		this.pass = pass;
+		this.plist = [];
+		this.clist = [];
+		this.alist = [];
+    }
+
+function isAlpha(str) {
+  return /^[a-zA-Z ]+$/.test(str);
+}
+
+var obj;
+	$.getJSON('users.json',function (data) {
+		obj = data;
+	});
+	
+function validateForm() {
+	
+	
+    var x = document.forms["myForm"]["user[email]"].value;
+	var y = document.forms["myForm"]["user[pass]"].value;
+	var z = document.forms["myForm"]["user[name]"].value;
+	var gol = document.forms["myForm"]["user[pass2]"].value;
+	if(gol != y ) {
+		alert("Your password confirmation doesn't match your password !");
+		document.forms["myForm"]["user[pass2]"].value = "";
+		document.forms["myForm"]["user[pass]"].value = "";
+		return false;
+	}
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+		document.forms["myForm"]["user[email]"].value = "";
+        return false;
+    }
+	if (!isAlpha(z) && z.trim() != "") {
+		alert("Name must contain Letters only");
+		document.forms["myForm"]["user[name]"].value = "";
+		return false;
+	}
+	if (y.length < 5 )  {
+		alert("Password must contain more than 4 letters !");
+		document.forms["myForm"]["user[pass2]"].value = "";
+		document.forms["myForm"]["user[pass]"].value = "";
+		return false;
+	}
+	for (var i=0; i < obj.length ; i++) {
+		if (x == obj[i].email) {
+			alert("this e-mail already exists !");
+			document.forms["myForm"]["user[email]"].value = "";
+			return false;
+		}
+	}
+	return true;
+}
+</script>
+</head>
+
+<body>
+<div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	<div style="top:0px; background-color : gray" >
+    <table align="center">
+	 <tr<tr height="100%">>
+      <td height="100%" width="100%" valign="middle" align="center" >
+<form name="myForm" action="http://127.0.0.1:8081/" onsubmit="return validateForm();" method="POST" class="form-group" >
+Email:<br> <input type="text" name="user[email]" class = "form-control"><br>
+Name: <br><input type="text" name="user[name]" class = "form-control"><br>
+Password: <br><input type="password" name="user[pass]" class = "form-control"><br>
+Confirm Password: <br><input type="password" name="user[pass2]" class = "form-control"><br><br>
+<input type="submit" value="Submit" class = "form-control">
+</form>
+</td>
+     </tr>
+    </table>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+[
+    {
+        "email": "hey@gmail.com",
+        "name": "amrNasr",
+        "pass": "     ",
+        "plist": [
+            {
+                "name": "da",
+                "date": "",
+                "disc": ""
+            }
+        ],
+        "clist": [],
+        "alist": []
+    },
+    {
+        "email": "omar@gmail.com",
+        "name": "adaj",
+        "pass": "12345",
+        "plist": [
+            {
+                "name": "task_2",
+                "date": "",
+                "disc": ""
+            }
+        ],
+        "clist": [],
+        "alist": [
+            {
+                "name": "task_2",
+                "date": "",
+                "disc": ""
+            }
+        ]
+    },
+    {
+        "email": "ahmed@gmail.com",
+        "name": "ahmed",
+        "pass": "test1",
+        "plist": [],
+        "clist": [],
+        "alist": []
+    },
+    {
+        "email": "omar1@gmail.com",
+        "name": "omar",
+        "pass": "12345",
+        "plist": [],
+        "clist": [],
+        "alist": []
+    }
+]

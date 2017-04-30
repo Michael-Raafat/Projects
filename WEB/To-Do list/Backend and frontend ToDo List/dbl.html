@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+	<head lang="en">
+	<title>Log In</title>
+	<meta charset="utf-8">
+	<script src="jquery.js"></script>
+	<script src="jquery-ui.js"></script>
+	<link rel="stylesheet" href="jquery-ui.css" />
+	<link rel="stylesheet" href="jquery.dataTables.min.css" />
+	<link rel="stylesheet" href="MyPoor.css" />
+	<script src="jquery.dataTables.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script>
+	alert("THIS is an old version of the database ! You can't apply changes in it");
+	$(document).ready(function(){
+	get('/home',null);
+	
+    });
+	function get(path, parameters) {
+        var form = $('<form></form>');
+
+        form.attr("method", "get");
+        form.attr("action", path);
+
+        $.each(parameters, function(key, value) {
+            if ( typeof value == 'object' || typeof value == 'array' ){
+                $.each(value, function(subkey, subvalue) {
+                    var field = $('<input />');
+                    field.attr("type", "hidden");
+                    field.attr("name", key+'[]');
+                    field.attr("value", subvalue);
+                    form.append(field);
+                });
+            } else {
+                var field = $('<input />');
+                field.attr("type", "hidden");
+                field.attr("name", key);
+                field.attr("value", value);
+                form.append(field);
+            }
+        });
+        $(document.body).append(form);
+        form.submit();
+		}
+	</script>
+	</head>
+	<body>
+	</body>
+	</html>

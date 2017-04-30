@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1450830874 source:c:\myfiles\college\projects\chess\ai\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

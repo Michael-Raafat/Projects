@@ -1,0 +1,15 @@
+var newArray = oldArray.slice();
+
+
+----------------------------------
+$.ajax({
+    type: "GET",
+    url: "your controller path",
+    data: parameters to the controler
+    dataType: "html",
+    success: your function
+});
+
+-------------------------------------
+
+ $.post('/test')
